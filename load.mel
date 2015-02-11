@@ -1,0 +1,23 @@
+//if (`getenv user` != "Administrator"){
+
+// add the path to where the directory exists and accessible to clients
+string $MENU = "r:/Pipe_Repo/Users/Hussain/utilities/loader";
+print $MENU;
+python("import pymel.core as pc"+
+"\nfrom site import addsitedir as asd"+
+"\nasd(r'"+ $MENU + "')"+
+"\nimport menu"
+);
+//}
+
+//global proc string fromNativePath ( string $strFile )
+//{
+	//if( `about -nt` )
+	//{
+        //string $buf[];
+        //string $newStr = encodeString($strFile);
+        //tokenize($newStr, "\\", $buf);
+        //$strFile = stringArrayToString($buf, "/");
+    //}
+	//return $strFile;
+//}
