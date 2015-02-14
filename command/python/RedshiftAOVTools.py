@@ -1,8 +1,18 @@
 import pymel.core as pc
 import re
 
-def addZDepth(*args):
-    pc.rsCreateAov(type='Depth')
+def addPasses(*args):
+    types = [
+        'Ambient Occlusion',
+        'Depth',
+        'Diffuse Filter',
+        'Diffuse Lighting',
+        'Global Illumination',
+        'Reflections',
+        'Refractions',
+        'Specular Lighting',
+        'Sub Surface Scatter']
+    map(lambda x: pc.rsCreateAov(type=x), types)
     try:
         if not pc.about(batch=True):
             pc.mel.redshiftUpdateActiveAovList()
@@ -85,7 +95,7 @@ def rsAOVToolShow():
     with pc.window(winname, w=200) as win:
         with pc.columnLayout(w=200):
             for func in [addMaterialIDs, addObjectIDs, correctObjectID,
-                    fixAOVPrefixes, addZDepth]:
+                    fixAOVPrefixes, addPasses]:
                 pc.button(label=func.func_name, c=func, w=200)
     win.show()
 
