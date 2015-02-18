@@ -2,7 +2,7 @@ import pymel.core as pc
 import re
 
 def addPasses(*args):
-    types = [
+    requiredTypes = [
         'Ambient Occlusion',
         'Depth',
         'Diffuse Filter',
@@ -12,7 +12,9 @@ def addPasses(*args):
         'Refractions',
         'Specular Lighting',
         'Sub Surface Scatter']
-    map(lambda x: pc.rsCreateAov(type=x), types)
+    existingTypes = [node.aovType.get() for node in pc.ls(type='RedshiftAOV')]
+    requiredTypes = [typ for typ in requiredTypes if typ not in existingTypes]
+    map(lambda x: pc.rsCreateAov(type=x), requiredTypes)
     try:
         if not pc.about(batch=True):
             pc.mel.redshiftUpdateActiveAovList()
@@ -30,6 +32,7 @@ def addMaterialIDs(*args):
     for name, ids in mattes.items():
         if pc.objExists(name):
             pc.warning('%s already Exists'%name)
+            continue
         node = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
         node.rename(name)
         node.mode.set(0)
@@ -55,6 +58,7 @@ def addObjectIDs(*args):
     for name, ids in mattes.items():
         if pc.objExists(name):
             pc.warning('%s already Exists'%name)
+            continue
         node = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
         node.rename(name)
         node.mode.set(1)
@@ -94,8 +98,8 @@ def rsAOVToolShow():
 
     with pc.window(winname, w=200) as win:
         with pc.columnLayout(w=200):
-            for func in [addMaterialIDs, addObjectIDs, correctObjectID,
-                    fixAOVPrefixes, addPasses]:
+            for func in [addPasses, addMaterialIDs, addObjectIDs, correctObjectID,
+                    fixAOVPrefixes]:
                 pc.button(label=func.func_name, c=func, w=200)
     win.show()
 
