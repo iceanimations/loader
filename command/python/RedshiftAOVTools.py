@@ -1,20 +1,42 @@
 import pymel.core as pc
 import re
+from collections import OrderedDict
+
+object_mattes = {}
+object_mattes['ID_MOS']=(1,2,3)        #mansour, obaid, salem
+object_mattes['ID_NNS']=(4,5,6)
+object_mattes['ID_MKS']=(7,8,9)
+object_mattes['ID_STB']=(10,11,12)
+object_mattes['ID_HPP']=(13,14,15)
+
+material_mattes = {}
+material_mattes['ID_FHE']=(1,2,3)
+material_mattes['ID_THT']=(4,5,6)
+material_mattes['ID_CTS']=(7,8,9)
+
+requiredTypes = [
+    'Ambient Occlusion',
+    'Depth',
+    'Diffuse Filter',
+    'Diffuse Lighting',
+    'Global Illumination',
+    'Reflections',
+    'Refractions',
+    'Specular Lighting',
+    'Sub Surface Scatter']
+
+def redshiftUpdateActiveAovList():
+    try:
+        if not pc.about(batch=True):
+            pc.mel.redshiftUpdateActiveAovList()
+    except:
+        pass
+
 
 def addPasses(*args):
-    requiredTypes = [
-        'Ambient Occlusion',
-        'Depth',
-        'Diffuse Filter',
-        'Diffuse Lighting',
-        'Global Illumination',
-        'Reflections',
-        'Refractions',
-        'Specular Lighting',
-        'Sub Surface Scatter']
     existingTypes = [node.aovType.get() for node in pc.ls(type='RedshiftAOV')]
-    requiredTypes = [typ for typ in requiredTypes if typ not in existingTypes]
-    map(lambda x: pc.rsCreateAov(type=x), requiredTypes)
+    passTypes = [typ for typ in requiredTypes if typ not in existingTypes]
+    map(lambda x: pc.rsCreateAov(type=x), passTypes)
     try:
         if not pc.about(batch=True):
             pc.mel.redshiftUpdateActiveAovList()
@@ -23,13 +45,7 @@ def addPasses(*args):
 
 
 def addMaterialIDs(*args):
-
-    mattes = {}
-    mattes['ID_FHE']=(1,2,3)
-    mattes['ID_THT']=(4,5,6)
-    mattes['ID_CTS']=(7,8,9)
-
-    for name, ids in mattes.items():
+    for name, ids in material_mattes.items():
         if pc.objExists(name):
             pc.warning('%s already Exists'%name)
             continue
@@ -40,22 +56,11 @@ def addMaterialIDs(*args):
         node.greenId.set(ids[1])
         node.blueId.set(ids[2])
 
-    try:
-        if not pc.about(batch=True):
-            pc.mel.redshiftUpdateActiveAovList()
-    except:
-        pass
+    redshiftUpdateActiveAovList()
 
 
-def addObjectIDs(*args):
-    mattes = {}
-    mattes['ID_MOS']=(1,2,3)
-    mattes['ID_NNS']=(4,5,6)
-    mattes['ID_MKS']=(7,8,9)
-    mattes['ID_STB']=(10,11,12)
-    mattes['ID_HPP']=(13,14,15)
-
-    for name, ids in mattes.items():
+def addObjectIDs(*argsobject_mattes):
+    for name, ids in object_mattes.items():
         if pc.objExists(name):
             pc.warning('%s already Exists'%name)
             continue
@@ -66,11 +71,44 @@ def addObjectIDs(*args):
         node.greenId.set(ids[1])
         node.blueId.set(ids[2])
 
-    try:
-        if not pc.about(batch=True):
-            pc.mel.redshiftUpdateActiveAovList()
-    except:
-        pass
+    redshiftUpdateActiveAovList()
+
+
+def addObjectIDsFromSelection(*args):
+    selectedNodes = pc.ls(sl=True, type='transform')
+    maxid = 0
+    objid_names = OrderedDict()
+    for node in selectedNodes:
+        node = pc.PyNode(node)
+        try:
+            name = node.namespaceList()[0]
+        except:
+            name = node.name().split('|')[-1]
+        name = name.split(':')[0].split('_')[0]
+        shapes = node.getShapes(type='mesh')
+        if shapes:
+            maxid = max([shape.rsObjectId.get() for shape in shapes])
+        else:
+            continue
+        if maxid:
+            objid_names[maxid] = name
+
+    current_matte = None
+    matte_name = 'ID'
+    for idx, objId in enumerate(objid_names.keys()):
+        if idx % 3 == 0:
+            current_matte = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
+            current_matte.redId.set(objId)
+            matte_name = 'ID'
+        elif idx % 3 == 1:
+            current_matte.greenId.set(objId)
+        else:
+            current_matte.blueId.set(objId)
+
+        matte_name += '_' + objid_names[objId]
+        current_matte.rename(matte_name)
+
+    redshiftUpdateActiveAovList()
 
 def correctObjectID(*args):
     for tr in pc.ls(type='transform', sl=1):
@@ -98,10 +136,12 @@ def rsAOVToolShow():
 
     with pc.window(winname, w=200) as win:
         with pc.columnLayout(w=200):
-            for func in [addPasses, addMaterialIDs, addObjectIDs, correctObjectID,
+            for func in [addPasses, addMaterialIDs, addObjectIDs,
+                    correctObjectID, addObjectIDsFromSelection,
                     fixAOVPrefixes]:
                 pc.button(label=func.func_name, c=func, w=200)
     win.show()
+
 
 if __name__ == '__main__':
     rsAOVToolShow()
