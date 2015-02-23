@@ -224,6 +224,11 @@ def connectObjects(*args):
     objectsConnect.connect()
 
 # Rendering ####################################################
+
+def setupScene(*args):
+    import setupSaveScene
+    reload(setupSaveScene)
+    setupSaveScene.setupScene()
     
 def setupSGNodes(*args):
     import rsRenderIssues
