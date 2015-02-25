@@ -26,6 +26,7 @@ def gatherRenderLayersInfo():
     layerInfo = OrderedDict()
     for crl in imaya.getRenderLayers():
         layerInfo[str(crl)]=getRenderLayerInfo(crl)
+    pc.editRenderLayerGlobals(crl=currentLayer)
     return layerInfo
 
 def displayRenderLayersInfo():

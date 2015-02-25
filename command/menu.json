@@ -1,5 +1,12 @@
 {
   "Rendering": {
+  	"Setup Setup Contact Layer": {
+      "_call": "setupContLayer",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   	"Setup Save Scene": {
       "_call": "setupScene",
       "_leaf": true,

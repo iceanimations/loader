@@ -11,6 +11,7 @@ site.addsitedir(r"R:\Python_Scripts\plugins")
 site.addsitedir(r"R:\Pipe_Repo\Users\Qurban\utilities")
 site.addsitedir(r"R:\Pipe_Repo\Projects\TACTIC")
 site.addsitedir(r"R:\Pipe_Repo\Projects\TACTIC\app")
+site.addsitedir(r"R:\Pipe_Repo\Users\Hussain\utilities")
 winCache = []
 
 # General ######################################################
@@ -180,8 +181,9 @@ def animTexture(*args):
     return animTexture()
 
 def displayRenderLayersInfo(*args):
-    from .python.displayRenderLayerInfo import displayRenderLayersInfo
-    return displayRenderLayersInfo()
+    import renderLayerInfo
+    reload(renderLayerInfo)
+    renderLayerInfo.Window().show()
 
 def RedshiftAOVTools(*args):
     from .python.RedshiftAOVTools import rsAOVToolShow
@@ -224,6 +226,11 @@ def connectObjects(*args):
     objectsConnect.connect()
 
 # Rendering ####################################################
+
+def setupContLayer(*args):
+    import setupContactLayer
+    reload(setupContactLayer)
+    setupContactLayer.Window().show()
 
 def setupScene(*args):
     import setupSaveScene
