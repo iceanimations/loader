@@ -170,6 +170,11 @@ def AddAiUtility(*args):
 
 # Animations ###################################################
 
+def setupHIK(*args):
+    import setupHumanIK
+    reload(setupHumanIK)
+    setupHumanIK.setup()
+
 def zvParentMaster(*args):
     import ZvP.ZvParentMaster as zvp
     reload(zvp)
