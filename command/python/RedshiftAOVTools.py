@@ -25,6 +25,14 @@ requiredTypes = [
     'Specular Lighting',
     'Sub Surface Scatter']
 
+def redshiftAOVExists(name):
+    for node in pc.ls(type='RedshiftAOV'):
+        if (node.name().split(":")[-1] == name or
+                (pc.attributeQuery('name', n=node, exists=True)
+                    and node.attr('name').get() == name)):
+            return True
+    return False
+
 def redshiftUpdateActiveAovList():
     try:
         if not pc.about(batch=True):
@@ -46,11 +54,13 @@ def addPasses(*args):
 
 def addMaterialIDs(*args):
     for name, ids in material_mattes.items():
-        if pc.objExists(name):
+        if redshiftAOVExists(name):
             pc.warning('%s already Exists'%name)
             continue
         node = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
         node.rename(name)
+        if pc.attributeQuery('name', n=node, exists=True):
+            node.attr('name').set(name)
         node.mode.set(0)
         node.redId.set(ids[0])
         node.greenId.set(ids[1])
@@ -61,11 +71,13 @@ def addMaterialIDs(*args):
 
 def addObjectIDs(*argsobject_mattes):
     for name, ids in object_mattes.items():
-        if pc.objExists(name):
+        if redshiftAOVExists(name):
             pc.warning('%s already Exists'%name)
             continue
         node = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
         node.rename(name)
+        if pc.attributeQuery('name', n=node, exists=True):
+            node.attr('name').set(name)
         node.mode.set(1)
         node.redId.set(ids[0])
         node.greenId.set(ids[1])
@@ -107,6 +119,8 @@ def addObjectIDsFromSelection(*args):
 
         matte_name += '_' + objid_names[objId]
         current_matte.rename(matte_name)
+        if pc.attributeQuery('name', n=node, exists=True):
+            current_matte.attr('name').set(matte_name)
 
     redshiftUpdateActiveAovList()
 
@@ -125,6 +139,8 @@ def fixAOVPrefixes(*args):
         name = node.name().split('|')[-1].split(':')[-1]
         if name.startswith('rsAov_'):
             name = name[6:]
+        if pc.attributeQuery('name', n=node, exists=True):
+            node.attr('name').set(name)
         ps = re.compile('<AOV>', re.I).sub(name, prefixString)
         node.filePrefix.set(ps)
 
