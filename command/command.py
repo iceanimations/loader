@@ -228,7 +228,7 @@ def submit_shot(*args):
 def connectObjects(*args):
     import objectsConnect
     reload(objectsConnect)
-    objectsConnect.connect()
+    objectsConnect.Window().show()
 
 # Rendering ####################################################
 
