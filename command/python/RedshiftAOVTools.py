@@ -13,6 +13,7 @@ material_mattes = {}
 material_mattes['ID_FHE']=(1,2,3)
 material_mattes['ID_THT']=(4,5,6)
 material_mattes['ID_CTS']=(7,8,9)
+material_mattes['ID_Cornea']=(10,11,12)
 
 requiredTypes = [
     'Ambient Occlusion',
