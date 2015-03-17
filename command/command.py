@@ -191,8 +191,9 @@ def displayRenderLayersInfo(*args):
     renderLayerInfo.Window().show()
 
 def RedshiftAOVTools(*args):
-    from .python.RedshiftAOVTools import rsAOVToolShow
-    return rsAOVToolShow()
+    from .python import RedshiftAOVTools
+    reload(RedshiftAOVTools)
+    return RedshiftAOVTools.rsAOVToolShow()
 
 def EnlargeHUDFonts(*args):
     '''
