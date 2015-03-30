@@ -7,7 +7,7 @@
       "_retire": false,
       "_annotation": ""
     },
-  	"Setup and Save Scene": {
+  	"Setup Scene": {
       "_call": "setupScene",
       "_leaf": true,
       "_lang": "",
