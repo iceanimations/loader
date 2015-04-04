@@ -1,5 +1,12 @@
 {
   "Rendering": {
+  	"Add Object Ids": {
+      "_call": "addObjectIds",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   	"Setup Contact Layer": {
       "_call": "setupContLayer",
       "_leaf": true,

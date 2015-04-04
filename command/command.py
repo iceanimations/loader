@@ -233,6 +233,11 @@ def connectObjects(*args):
 
 # Rendering ####################################################
 
+def addObjectIds(*args):
+    import addIds
+    reload(addIds)
+    addIds.Window().show()
+
 def setupContLayer(*args):
     import setupContactLayer
     reload(setupContactLayer)
