@@ -233,6 +233,11 @@ def connectObjects(*args):
 
 # Rendering ####################################################
 
+def addObjectIds_auto(*args):
+    import addIds_auto
+    reload(addIds_auto)
+    addIds_auto.Window().show()
+
 def addObjectIds(*args):
     import addIds
     reload(addIds)

@@ -1,5 +1,12 @@
 {
   "Rendering": {
+  	"Add Object Ids (Auto)": {
+      "_call": "addObjectIds_auto",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   	"Add Object Ids": {
       "_call": "addObjectIds",
       "_leaf": true,
