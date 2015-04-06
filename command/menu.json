@@ -230,6 +230,13 @@
     }
   },
   "Lighting": {
+  	"Add Characters": {
+      "_call": "addChars",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "Redshift AOV Tools": {
       "_call": "RedshiftAOVTools",
       "_leaf": true,

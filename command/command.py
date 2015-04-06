@@ -70,6 +70,11 @@ def Instance_To_Geometry(*args):
 
 # Lighting #####################################################
 
+def addChars(*args):
+    import createScene
+    reload(createScene)
+    createScene.Window().show()
+
 def fixRSTextures(*args):
     import ICEScriptNode as sb
     reload(sb)
