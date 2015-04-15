@@ -70,6 +70,11 @@ def Instance_To_Geometry(*args):
 
 # Lighting #####################################################
 
+def addIESProf(*args):
+    import addIESProfile
+    reload(addIESProfile)
+    addIESProfile.Window().show()
+
 def addChars(*args):
     import createScene
     reload(createScene)

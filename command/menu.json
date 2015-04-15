@@ -230,6 +230,13 @@
     }
   },
   "Lighting": {
+  	"Add IES Profile": {
+      "_call": "addIESProf",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   	"Add Characters": {
       "_call": "addChars",
       "_leaf": true,
