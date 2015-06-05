@@ -537,6 +537,11 @@ def makeTearableShelf(*args):
 def tearableShelf(*args):
     makeTearableShelf()
 
+def enableMultiStereoCam(*args):
+    import mvstereo
+    reload(mvstereo)
+    mvstereo.registerMultiRig()
+
 # MEL ##########################################################
 for item in os.listdir(LIBMEL):
     import pymel.core as pc
