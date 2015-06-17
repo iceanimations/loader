@@ -21,6 +21,13 @@
       "_retire": false,
       "_annotation": ""
     },
+  	"Register Multi Stereo Cam": {
+      "_call": "enableMultiStereoCam",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   	"Setup Contact Layer": {
       "_call": "setupContLayer",
       "_leaf": true,
