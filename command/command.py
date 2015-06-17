@@ -243,6 +243,11 @@ def connectObjects(*args):
 
 # Rendering ####################################################
 
+def addMtlIds(*args):
+    import addMaterialIds
+    reload(addMaterialIds)
+    addMaterialIds.Window().show()
+
 def addObjectIds_auto(*args):
     import addIds_auto
     reload(addIds_auto)
