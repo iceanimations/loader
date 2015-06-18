@@ -1,7 +1,7 @@
 {
   "Rendering": {
   	"Add Material Ids": {
-      "_call": "addMtlIds_auto",
+      "_call": "addMtlIds",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
