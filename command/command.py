@@ -16,7 +16,10 @@ winCache = []
 
 # General ######################################################
 
-
+def _createLayout(*args):
+    import createLayout
+    reload(createLayout)
+    createLayout.Window().show()
 
 def Asset_Manager(*args):
     import maya.cmds as mc
