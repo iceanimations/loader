@@ -121,6 +121,13 @@
     }
   },
   "Animation": {
+	"Studio Library (For Poses)": {
+        "_call": "callStudioLibrary",
+        "_leaf": true,
+        "_lang": "",
+        "_retire": false,
+        "_annotation": ""
+    },
 	"Setup HumanIK": {
         "_call": "setupHIK",
         "_leaf": true,
