@@ -184,9 +184,9 @@ def AddAiUtility(*args):
 # Animations ###################################################
 
 def _addKeyFrame(*args):
-    import addKyes
-    reload(addKyes)
-    addKyes.add()
+    import addKeys
+    reload(addKeys)
+    addKeys.add()
 
 def setupHIK(*args):
     import setupHumanIK
