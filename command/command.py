@@ -555,6 +555,10 @@ def enableMultiStereoCam(*args):
     reload(mvstereo)
     mvstereo.registerMultiRig()
 
+def callStudioLibrary(*args):
+    import studiolibrary
+    studiolibrary.main()
+
 # MEL ##########################################################
 for item in os.listdir(LIBMEL):
     import pymel.core as pc
