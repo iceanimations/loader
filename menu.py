@@ -4,6 +4,8 @@ This modules contains the structure of ICE's script menu that is drawn inside Ma
 
 import pymel.core as pc
 from command import command
+import mayaStartup
+reload(mayaStartup)
 import json, os, sys, random
 from site import addsitedir as asd
 op = os.path
@@ -68,6 +70,6 @@ def create_menu(*args):
 
 def startup():
     create_menu()
-    
+    mayaStartup.start()
 
 startup()
