@@ -70,6 +70,6 @@ def create_menu(*args):
 
 def startup():
     create_menu()
-    mayaStartup.start()
+    #mayaStartup.start()
 
 startup()
