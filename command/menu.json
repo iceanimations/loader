@@ -251,6 +251,13 @@
     }
   },
   "Lighting": {
+    "Create Shots": {
+      "_call": "createShots",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   	"Add IES Profile": {
       "_call": "addIESProf",
       "_leaf": true,
