@@ -1,48 +1,48 @@
 {
   "Rendering": {
-  	"Add Material Ids": {
+    "Add Material Ids": {
       "_call": "addMtlIds",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Add Object Ids (Auto)": {
+    "Add Object Ids (Auto)": {
       "_call": "addObjectIds_auto",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Add Object Ids": {
+    "Add Object Ids": {
       "_call": "addObjectIds",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Register Multi Stereo Cam": {
+    "Register Multi Stereo Cam": {
       "_call": "enableMultiStereoCam",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Setup Contact Layer": {
+    "Setup Contact Layer": {
       "_call": "setupContLayer",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Setup Scene": {
+    "Setup Scene": {
       "_call": "setupScene",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Setup SG Nodes": {
+    "Setup SG Nodes": {
       "_call": "setupSGNodes",
       "_leaf": true,
       "_lang": "",
@@ -121,14 +121,21 @@
     }
   },
   "Animation": {
-  	"SetKeyFrame (current min max)": {
+    "Studio Library (For Poses)": {
+        "_call": "callStudioLibrary",
+        "_leaf": true,
+        "_lang": "",
+        "_retire": false,
+        "_annotation": ""
+    },
+    "SetKeyFrame (current min max)": {
         "_call": "_addKeyFrame",
         "_leaf": true,
         "_lang": "",
         "_retire": false,
         "_annotation": ""
     },
-	"Setup HumanIK": {
+    "Setup HumanIK": {
         "_call": "setupHIK",
         "_leaf": true,
         "_lang": "",
@@ -258,14 +265,14 @@
       "_retire": false,
       "_annotation": ""
     },
-  	"Add IES Profile": {
+    "Add IES Profile": {
       "_call": "addIESProf",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Add Characters": {
+    "Add Characters": {
       "_call": "addChars",
       "_leaf": true,
       "_lang": "",
@@ -279,28 +286,28 @@
       "_retire": false,
       "_annotation": ""
     },
-  	"Add rsAmbient Occlusion": {
+    "Add rsAmbient Occlusion": {
       "_call": "addRSAmbientOcclusion",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"AOV Override Enable (Redshift)": {
+    "AOV Override Enable (Redshift)": {
       "_call": "enable_aov_redshift",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Area To Spot Light": {
+    "Area To Spot Light": {
       "_call": "areaToSpot",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
-  	"Add Shodow Catcher": {
+    "Add Shodow Catcher": {
       "_call": "_addShadowCatcher",
       "_leaf": true,
       "_lang": "",
@@ -321,7 +328,7 @@
       "_retire": false,
       "_annotation": ""
     },
-  	"AOV Override Enable (Arnold)": {
+    "AOV Override Enable (Arnold)": {
       "_call": "enable_aov",
       "_leaf": true,
       "_lang": "",
@@ -467,7 +474,7 @@
     }
   },
   "Rigging": {
-  	"Add LD": {
+    "Add LD": {
       "_call": "connectObjects",
       "_leaf": true,
       "_lang": "",
@@ -582,11 +589,11 @@
       "_annotation": ""
     },
     "Shaders to Groups": {
-    	"_call": "sag",
-    	"_leaf": true,
-      	"_lang": "",
-      	"_retire": false,
-      	"_annotation": ""
+        "_call": "sag",
+        "_leaf": true,
+        "_lang": "",
+        "_retire": false,
+        "_annotation": ""
     }
   },
   "Dynamics": {
@@ -735,7 +742,7 @@
     }
   },
   "General": {
-  	"Create Layout": {
+    "Create Layout": {
       "_call": "_createLayout",
       "_leaf": true,
       "_lang": "",
