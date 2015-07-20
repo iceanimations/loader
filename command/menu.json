@@ -252,7 +252,7 @@
   },
   "Lighting": {
     "Create Shots": {
-      "_call": "createShots",
+      "_call": "_createShots",
       "_leaf": true,
       "_lang": "",
       "_retire": false,

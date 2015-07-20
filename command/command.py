@@ -73,10 +73,10 @@ def Instance_To_Geometry(*args):
 
 # Lighting #####################################################
 
-def createShots(*args):
-    import RenderCheck
-    reload(RenderCheck)
-    RenderCheck.Window().show()
+def _createShots(*args):
+    import createShots
+    reload(createShots)
+    createShots.Window().show()
 
 def addIESProf(*args):
     import addIESProfile
