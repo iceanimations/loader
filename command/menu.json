@@ -1,5 +1,12 @@
 {
   "Rendering": {
+    "Render Shots": {
+      "_call": "_renderShots",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "Add Material Ids": {
       "_call": "addMtlIds",
       "_leaf": true,

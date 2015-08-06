@@ -256,6 +256,11 @@ def connectObjects(*args):
 
 # Rendering ####################################################
 
+def _renderShots(*args):
+    import renderShots
+    reload(renderShots)
+    renderShots.Window().show()
+
 def addMtlIds(*args):
     import addMaterialIds
     reload(addMaterialIds)
