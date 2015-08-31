@@ -72,6 +72,10 @@ def Instance_To_Geometry(*args):
     select.run()
 
 # Lighting #####################################################
+def _setupMasterScene(*args):
+    import setupMasterScene as sms
+    reload(sms)
+    sms.Window().show()
 
 def _createShots(*args):
     import createShots

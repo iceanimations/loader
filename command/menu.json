@@ -42,7 +42,7 @@
       "_retire": false,
       "_annotation": ""
     },
-    "Setup Scene": {
+    "Setup Shot": {
       "_call": "setupScene",
       "_leaf": true,
       "_lang": "",
@@ -265,6 +265,13 @@
     }
   },
   "Lighting": {
+  "Setup Master Scene": {
+      "_call": "_setupMasterScene",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "Create Shots": {
       "_call": "_createShots",
       "_leaf": true,
