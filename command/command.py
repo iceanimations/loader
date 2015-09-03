@@ -72,6 +72,11 @@ def Instance_To_Geometry(*args):
     select.run()
 
 # Lighting #####################################################
+def fillinout_RO(*args):
+    import fillinoutRO
+    reload(fillinoutRO)
+    fillinoutRO.fill()
+
 def _setupMasterScene(*args):
     import setupMasterScene as sms
     reload(sms)

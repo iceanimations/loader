@@ -265,6 +265,13 @@
     }
   },
   "Lighting": {
+  "Fill In Out (Remove Overrides)": {
+      "_call": "fillinout_RO",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   "Setup Master Scene": {
       "_call": "_setupMasterScene",
       "_leaf": true,
