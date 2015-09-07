@@ -144,6 +144,7 @@ def fixAOVPrefixes(*args):
             node.attr('name').set(name)
         ps = re.compile('<AOV>', re.I).sub(name, prefixString)
         node.filePrefix.set(ps)
+        node.exrCompression.set(3)
 
 
 def rsAOVToolShow():
