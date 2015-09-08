@@ -328,7 +328,7 @@
       "_retire": false,
       "_annotation": ""
     },
-    "Add Shodow Catcher": {
+    "Add Shadow Catcher": {
       "_call": "_addShadowCatcher",
       "_leaf": true,
       "_lang": "",
