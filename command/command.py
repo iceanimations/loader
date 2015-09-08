@@ -265,6 +265,11 @@ def connectObjects(*args):
 
 # Rendering ####################################################
 
+def matte_works(*args):
+    import matteWorks
+    reload(matteWorks)
+    matteWorks.Window().show()
+
 def _renderShots(*args):
     import renderShots
     reload(renderShots)
