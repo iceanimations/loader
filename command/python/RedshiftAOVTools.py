@@ -15,6 +15,21 @@ material_mattes['ID_THT']=(4,5,6)
 material_mattes['ID_CTS']=(7,8,9)
 material_mattes['ID_Cornea']=(10,11,12)
 
+
+object_mattesDD = {}
+object_mattesDD['ID_CDB']=(1,2,3)        #mansour, obaid, salem
+object_mattesDD['ID_SFM']=(4,5,6)
+object_mattesDD['ID_VMM']=(7,8,9)
+object_mattesDD['ID_MAM']=(10,11,12)
+object_mattesDD['ID_MMM']=(13,14,15)
+object_mattesDD['ID_SRE']=(16,17,18)
+
+material_mattesDD = {}
+material_mattesDD['ID_BFO']=(1,2,3)
+material_mattesDD['ID_TIT']=(4,5,6)
+material_mattesDD['ID_EYE']=(7,8,9)
+
+
 requiredTypes = [
     'Ambient Occlusion',
     'Depth',
@@ -145,6 +160,38 @@ def fixAOVPrefixes(*args):
         ps = re.compile('<AOV>', re.I).sub(name, prefixString)
         node.filePrefix.set(ps)
         node.exrCompression.set(3)
+        
+def addMaterialIDs_DingDong(*args):
+    for name, ids in material_mattesDD.items():
+        if redshiftAOVExists(name):
+            pc.warning('%s already Exists'%name)
+            continue
+        node = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
+        node.rename(name)
+        if pc.attributeQuery('name', n=node, exists=True):
+            node.attr('name').set(name)
+        node.mode.set(0)
+        node.redId.set(ids[0])
+        node.greenId.set(ids[1])
+        node.blueId.set(ids[2])
+
+    redshiftUpdateActiveAovList()
+    
+def addObjectIDs_DingDong(*argsobject_mattes):
+    for name, ids in object_mattesDD.items():
+        if redshiftAOVExists(name):
+            pc.warning('%s already Exists'%name)
+            continue
+        node = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
+        node.rename(name)
+        if pc.attributeQuery('name', n=node, exists=True):
+            node.attr('name').set(name)
+        node.mode.set(1)
+        node.redId.set(ids[0])
+        node.greenId.set(ids[1])
+        node.blueId.set(ids[2])
+
+    redshiftUpdateActiveAovList()
 
 
 def rsAOVToolShow():
@@ -156,7 +203,8 @@ def rsAOVToolShow():
         with pc.columnLayout(w=200):
             for func in [addPasses, addMaterialIDs, addObjectIDs,
                     correctObjectID, addObjectIDsFromSelection,
-                    fixAOVPrefixes]:
+                    fixAOVPrefixes, addMaterialIDs_DingDong,
+                    addObjectIDs_DingDong]:
                 pc.button(label=func.func_name, c=func, w=200)
     win.show()
 
