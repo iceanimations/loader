@@ -532,6 +532,13 @@
     }
   },
   "Modeling": {
+    "Delete All Keys": {
+      "_call": "deleteAllKeys",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": "Deletes all keys in Scene"
+    },
     "Pivot Toolbox": {
       "_call": "pivotToolbox",
       "_leaf": true,

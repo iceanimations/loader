@@ -33,6 +33,14 @@ def Asset_Manager(*args):
     import dam
     dam.main()
 
+def deleteAllKeys(*args):
+    import pymel.core as pc
+    for node in pc.ls(type='animCurve'):
+        try:
+            pc.delete(node)
+        except:
+            pc.warning('Cannot delete node %r'%node)
+
 def bundleScene(*args):
     import sceneBundle as sb
     reload(sb)
