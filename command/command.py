@@ -502,8 +502,7 @@ def ShotExplorer(*args):
 def showPublishedAssets(*args):
     checkoutin = __explorer()
     if checkoutin:
-        win = checkoutin.PublishReport()
-        win.show()
+        checkoutin.pr.run_in_maya()
 
 def Logout(*args):
     import pymel.core as pc
