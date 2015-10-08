@@ -115,7 +115,10 @@ def addObjectIDsFromSelection(*args):
         name = name.split(':')[0].split('_')[0]
         shapes = node.getShapes(type='mesh')
         if shapes:
-            maxid = max([shape.rsObjectId.get() for shape in shapes])
+            try:
+                maxid = max([shape.rsObjectId.get() for shape in shapes])
+            except ValueError:
+                continue
         else:
             continue
         if maxid:
@@ -143,7 +146,10 @@ def addObjectIDsFromSelection(*args):
 def correctObjectID(*args):
     for tr in pc.ls(type='transform', sl=1):
         shapes = tr.getShapes(type='mesh')
-        maxid = max([shape.rsObjectId.get() for shape in shapes])
+        try:
+            maxid = max([shape.rsObjectId.get() for shape in shapes])
+        except ValueError:
+            continue
         for shape in shapes:
             shape.rsObjectId.set(maxid)
 

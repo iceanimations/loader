@@ -273,10 +273,10 @@ def connectObjects(*args):
 
 # Rendering ####################################################
 
-def matte_works(*args):
-    import matteWorks
-    reload(matteWorks)
-    matteWorks.Window().show()
+def matte_ids(*args):
+    import matteIds
+    reload(matteIds)
+    matteIds.Window().show()
 
 def _renderShots(*args):
     import renderShots
