@@ -499,6 +499,12 @@ def ShotExplorer(*args):
         win = checkoutin.ShotExplorer()
         win.show()
 
+def showPublishedAssets(*args):
+    checkoutin = __explorer()
+    if checkoutin:
+        win = checkoutin.PublishReport()
+        win.show()
+
 def Logout(*args):
     import pymel.core as pc
     import auth.user as user

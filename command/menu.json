@@ -472,6 +472,13 @@
       "_retire": false,
       "_annotation": ""
     },
+    "Published Assets": {
+      "_call": "published_assets",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "Shot Explorer (Buggy/Beta)": {
       "_call": "ShotExplorer",
       "_leaf": true,
