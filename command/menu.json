@@ -473,7 +473,7 @@
       "_annotation": ""
     },
     "Published Assets": {
-      "_call": "published_assets",
+      "_call": "showPublishedAssets",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
