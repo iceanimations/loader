@@ -763,6 +763,13 @@
     }
   },
   "General": {
+    "Add Assets": {
+      "_call": "_addAssets",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "Create Layout": {
       "_call": "_createLayout",
       "_leaf": true,

@@ -15,6 +15,10 @@ site.addsitedir(r"R:\Pipe_Repo\Users\Hussain\utilities")
 winCache = []
 
 # General ######################################################
+def _addAssets(*args):
+    import addAssets
+    reload(addAssets)
+    addAssets.Window().show()
 
 def _createLayout(*args):
     import createLayout
