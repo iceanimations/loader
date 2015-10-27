@@ -37,6 +37,14 @@ def Asset_Manager(*args):
     import dam
     dam.main()
 
+def deleteAllKeys(*args):
+    import pymel.core as pc
+    for node in pc.ls(type='animCurve'):
+        try:
+            pc.delete(node)
+        except:
+            pc.warning('Cannot delete node %r'%node)
+
 def bundleScene(*args):
     import sceneBundle as sb
     reload(sb)
@@ -493,6 +501,12 @@ def ShotExplorer(*args):
     checkoutin = __explorer()
     if checkoutin:
         win = checkoutin.ShotExplorer()
+        win.show()
+
+def showPublishedAssets(*args):
+    checkoutin = __explorer()
+    if checkoutin:
+        win = checkoutin.PublishReport()
         win.show()
 
 def Logout(*args):
