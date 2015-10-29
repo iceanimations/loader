@@ -458,6 +458,13 @@
     }
   },
   "TACTIC": {
+    "Reference Sequence Assets": {
+      "_call": "_addAssets",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "My Tasks": {
       "_call": "MyTasks",
       "_leaf": true,
@@ -777,13 +784,6 @@
     }
   },
   "General": {
-    "Add Assets": {
-      "_call": "_addAssets",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
     "Create Layout": {
       "_call": "_createLayout",
       "_leaf": true,

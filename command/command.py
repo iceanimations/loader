@@ -15,10 +15,6 @@ site.addsitedir(r"R:\Pipe_Repo\Users\Hussain\utilities")
 winCache = []
 
 # General ######################################################
-def _addAssets(*args):
-    import addAssets
-    reload(addAssets)
-    addAssets.Window().show()
 
 def _createLayout(*args):
     import createLayout
@@ -476,6 +472,11 @@ def sag(*args):
     sag.assign()
 
 # TACTIC #######################################################
+
+def _addAssets(*args):
+    import addAssets
+    reload(addAssets)
+    addAssets.Window().show()
 
 def __explorer():
     # get the user
