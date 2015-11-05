@@ -537,6 +537,9 @@ def SceneBreakdown(*args):
     reload(breakdown)
     win =  breakdown.Breakdown()
     win.show()
+    
+def published_assets(*args):
+    pass
 
 # Utilities ####################################################
 
