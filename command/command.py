@@ -473,6 +473,11 @@ def sag(*args):
 
 # TACTIC #######################################################
 
+def _addAssets(*args):
+    import addAssets
+    reload(addAssets)
+    addAssets.Window().show()
+
 def __explorer():
     # get the user
     import login
@@ -531,6 +536,9 @@ def SceneBreakdown(*args):
     reload(breakdown)
     win =  breakdown.Breakdown()
     win.show()
+    
+def published_assets(*args):
+    pass
 
 # Utilities ####################################################
 
