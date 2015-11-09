@@ -271,6 +271,10 @@ def connectObjects(*args):
     reload(objectsConnect)
     objectsConnect.Window().show()
 
+def rig_renamer(*args):
+    import rigrenamer
+    rigrenamer.gui()
+
 # Rendering ####################################################
 
 def matte_ids(*args):

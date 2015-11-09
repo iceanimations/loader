@@ -516,6 +516,13 @@
       "_retire": false ,
       "_annotation": ""
     },
+    "Rig Renamer": {
+      "_call": "rig_renamer",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false ,
+      "_annotation": ""
+    },
     "Lock UnLock": {
       "_call": "LockUnLock",
       "_leaf": true,
