@@ -167,6 +167,10 @@ def fixAOVPrefixes(*args):
         node.filePrefix.set(ps)
         node.exrCompression.set(3)
         
+def setFilenamePrefix(*args):
+    pc.setAttr("redshiftOptions.imageFilePrefix", "<Camera>/<RenderLayer>/<RenderLayer>_<AOV>/<RenderLayer>_<AOV>_", type="string")
+    pc.setAttr("defaultRenderGlobals.imageFilePrefix", "<Camera>/<RenderLayer>/<RenderLayer>_<AOV>/<RenderLayer>_<AOV>_", type="string")
+        
 def addMaterialIDs_DingDong(*args):
     for name, ids in material_mattesDD.items():
         if redshiftAOVExists(name):
@@ -209,7 +213,8 @@ def rsAOVToolShow():
         with pc.columnLayout(w=200):
             for func in [addPasses, addMaterialIDs, addObjectIDs,
                     correctObjectID, addObjectIDsFromSelection,
-                    fixAOVPrefixes, addMaterialIDs_DingDong,
+                    fixAOVPrefixes, setFilenamePrefix,
+                    addMaterialIDs_DingDong,
                     addObjectIDs_DingDong]:
                 pc.button(label=func.func_name, c=func, w=200)
     win.show()
