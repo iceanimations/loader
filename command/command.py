@@ -271,6 +271,10 @@ def connectObjects(*args):
     reload(objectsConnect)
     objectsConnect.Window().show()
 
+def rig_renamer(*args):
+    import rigrenamer
+    rigrenamer.gui()
+
 # Rendering ####################################################
 
 def matte_ids(*args):
@@ -507,8 +511,7 @@ def ShotExplorer(*args):
 def showPublishedAssets(*args):
     checkoutin = __explorer()
     if checkoutin:
-        win = checkoutin.PublishReport()
-        win.show()
+        checkoutin.pr.run_in_maya()
 
 def Logout(*args):
     import pymel.core as pc
