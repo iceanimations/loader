@@ -458,7 +458,7 @@
     }
   },
   "TACTIC": {
-    "Reference Sequence Assets": {
+    "Sequence Assets": {
       "_call": "_addAssets",
       "_leaf": true,
       "_lang": "",
