@@ -8,7 +8,7 @@ import os
 os.environ['XBMLANGPATH'] = XPM + ';' + os.environ.get('XBMLANGPATH', '')
 
 site.addsitedir(r"R:\Python_Scripts\plugins")
-site.addsitedir(r"R:\Pipe_Repo\Users\Qurban\utilities")
+site.addsitedir(r"R:\Python_Scripts\plugins\utilities")
 site.addsitedir(r"R:\Pipe_Repo\Projects\TACTIC")
 site.addsitedir(r"R:\Pipe_Repo\Projects\TACTIC\app")
 site.addsitedir(r"R:\Pipe_Repo\Users\Hussain\utilities")
