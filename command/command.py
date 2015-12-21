@@ -17,9 +17,10 @@ winCache = []
 # General ######################################################
 
 def _createLayout(*args):
-    import createLayout
-    reload(createLayout)
-    createLayout.Window().show()
+    if __tacticLogin():
+        import createLayout
+        reload(createLayout)
+        createLayout.Window().show()
 
 def Asset_Manager(*args):
     import maya.cmds as mc
@@ -204,6 +205,12 @@ def AddAiUtility(*args):
     util.add()
 
 # Animations ###################################################
+
+def launchMSE(*args):
+    if __tacticLogin():
+        import multiShotExport as mse
+        reload(mse)
+        mse.Window().show()
 
 def _addKeyFrame(*args):
     import addKeys
@@ -481,8 +488,8 @@ def _addAssets(*args):
     import addAssets
     reload(addAssets)
     addAssets.Window().show()
-
-def __explorer():
+    
+def __tacticLogin():
     # get the user
     import login
     reload(login)
@@ -491,10 +498,13 @@ def __explorer():
     if not user.user_registered():
         if not login.Dialog().exec_():
             return
+    return True
 
-    import checkoutin
-    reload(checkoutin)
-    return checkoutin
+def __explorer():
+    if __tacticLogin():
+        import checkoutin
+        reload(checkoutin)
+        return checkoutin
 
 def showMainBrowser(*args):
     checkoutin = __explorer()

@@ -128,6 +128,13 @@
     }
   },
   "Animation": {
+    "Multi Shot Export (TACTIC)": {
+      "_call": "launchMSE",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "Studio Library (For Poses)": {
         "_call": "callStudioLibrary",
         "_leaf": true,
