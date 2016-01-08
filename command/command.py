@@ -81,6 +81,12 @@ def Instance_To_Geometry(*args):
     select.run()
 
 # Lighting #####################################################
+
+def _proxyCacheSwitch(*args):
+    import proxyCacheSwitch
+    reload(proxyCacheSwitch)
+    proxyCacheSwitch.Window().show()
+
 def fillinout_RO(*args):
     import fillinoutRO
     reload(fillinoutRO)

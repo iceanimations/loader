@@ -272,6 +272,13 @@
     }
   },
   "Lighting": {
+  "Proxy & GPU Cache Switch": {
+      "_call": "_proxyCacheSwitch",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   "Fill In Out (Remove Overrides)": {
       "_call": "fillinout_RO",
       "_leaf": true,
