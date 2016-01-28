@@ -271,7 +271,7 @@
       "_annotation": ""
     }
   },
-  "Look Development": {
+  "Look Dev": {
     "Mark Nano Screen": {
       "_call": "addAttrNanoScreen",
       "_leaf": true,
