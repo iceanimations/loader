@@ -80,6 +80,13 @@ def Instance_To_Geometry(*args):
     select = imp.load_source("instancer", r"R:\Pipe_Repo\Users\Hussain\scripts\sag_instancerToGeometry.py")
     select.run()
 
+# Look Development #####################################################
+
+def addAttrNanoScreen(*args):
+    from .python import nanoScreenMark
+    reload(nanoScreenMark)
+    nanoScreenMark.addAttrToFileNode()
+
 # Lighting #####################################################
 
 def _proxyCacheSwitch(*args):
@@ -102,78 +109,26 @@ def _createShots(*args):
     reload(createShots)
     createShots.Window().show()
 
-def addIESProf(*args):
-    import addIESProfile
-    reload(addIESProfile)
-    addIESProfile.Window().show()
-
-def addChars(*args):
-    import createScene
-    reload(createScene)
-    createScene.Window().show()
-
 def fixRSTextures(*args):
     import ICEScriptNode as sb
     reload(sb)
     sb.addNode()
-
-def addRSAmbientOcclusion(*args):
-    import rsAddOcclusion
-    reload(rsAddOcclusion)
-    rsAddOcclusion.add()
 
 def enable_aov_redshift(*args):
     import redshift_aov_enable
     reload(redshift_aov_enable)
     redshift_aov_enable.Window().show()
 
-def areaToSpot(*args):
-    import aiAreaLightToSpotLight as area2spot
-    reload(area2spot)
-    area2spot.convert()
-
-def arnoldToVRay(*args):
-    import AiToVRay as av
-    reload(av)
-    av.Window().show()
-
 def toRedshift(*args):
     import arnoldToRedshift as ars
     reload(ars)
     ars.Window().show()
-
-def _addShadowCatcher(*args):
-    import addShadowCatcher as sc
-    reload(sc)
-    sc.add()
-
-def enable_aov(*args):
-    import aov_enable
-    reload(aov_enable)
-    aov_enable.Window().show()
-
-def udimMaker(*args):
-    import CreateUDIM
-    reload(CreateUDIM)
-    CreateUDIM.win.Window().show()
 
 def texturesReloader(*args):
 
     import textureReloader as tr
     reload(tr)
     tr.Window().show()
-
-def mToA(*args):
-    import miToAi
-    reload(miToAi)
-    win = miToAi.Window()
-    winCache.append(win)
-    win.show()
-
-def VRay2Arnold(*args):
-    import VRayToArnold
-    reload(VRayToArnold)
-    VRayToArnold.Window().show()
 
 def ShaderTransfer(*args):
     import shaderTransfer
@@ -185,30 +140,11 @@ def SceneCheck(*args):
     site.addsitedir(r"R:\Python_Scripts\plugins\sceneCheck_v1.0.0")
     import runSceneCheck
     reload(runSceneCheck)
-
-def MayaToAi(*args):
-    import MayaToArnold
-    reload(MayaToArnold)
-    MayaToArnold.win.Window().show()
-
-def aiToAlSurface(*args):
-    site.addsitedir(r"R:\Python_Scripts\plugins\aiToAiS")
-    import aiToAiS
-    reload(aiToAiS)
-    win = aiToAiS.Window()
-    winCache.append(win)
-    win.show()
-
-def Add_Light_Flicker(*args):
-    site.addsitedir(r"r:/Python_Scripts/plugins/LightFlicker/")
-    import flicker
-    reload(flicker)
-    flicker.addFlicker()
-
-def AddAiUtility(*args):
-    import addaiutility as util
-    reload(util)
-    util.add()
+    
+def RedshiftAOVTools(*args):
+    from .python import RedshiftAOVTools
+    reload(RedshiftAOVTools)
+    return RedshiftAOVTools.rsAOVToolShow()
 
 # Animations ###################################################
 
@@ -242,11 +178,6 @@ def displayRenderLayersInfo(*args):
     import renderLayerInfo
     reload(renderLayerInfo)
     renderLayerInfo.Window().show()
-
-def RedshiftAOVTools(*args):
-    from .python import RedshiftAOVTools
-    reload(RedshiftAOVTools)
-    return RedshiftAOVTools.rsAOVToolShow()
 
 def EnlargeHUDFonts(*args):
     '''

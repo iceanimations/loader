@@ -271,14 +271,44 @@
       "_annotation": ""
     }
   },
-  "Lighting": {
-  "Proxy & GPU Cache Switch": {
+  "Look Development": {
+    "Mark Nano Screen": {
+      "_call": "addAttrNanoScreen",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
+    "Proxy & GPU Cache Switch": {
       "_call": "_proxyCacheSwitch",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
       "_annotation": ""
     },
+    "Shader Transfer": {
+      "_call": "ShaderTransfer",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
+    "To Redshift": {
+      "_call": "toRedshift",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
+    "Texture Reloader": {
+      "_call": "texturesReloader",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    }
+  },
+  "Lighting": {
   "Fill In Out (Remove Overrides)": {
       "_call": "fillinout_RO",
       "_leaf": true,
@@ -300,29 +330,8 @@
       "_retire": false,
       "_annotation": ""
     },
-    "Add IES Profile": {
-      "_call": "addIESProf",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Add Characters": {
-      "_call": "addChars",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
     "Redshift AOV Tools": {
       "_call": "RedshiftAOVTools",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Add rsAmbient Occlusion": {
-      "_call": "addRSAmbientOcclusion",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
@@ -335,136 +344,9 @@
       "_retire": false,
       "_annotation": ""
     },
-    "Area To Spot Light": {
-      "_call": "areaToSpot",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Add Shadow Catcher": {
-      "_call": "_addShadowCatcher",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "To Redshift": {
-      "_call": "toRedshift",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Arnold To VRay": {
-      "_call": "arnoldToVRay",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "AOV Override Enable (Arnold)": {
-      "_call": "enable_aov",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Ai To Al Surface": {
-      "_call": "aiToAlSurface",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Insert Gamma Correct": {
-      "_call": "insertGammaCorrect",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Add Flat Diffuse": {
-      "_call": "AddAiUtility",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false ,
-      "_annotation": ""
-    },
-    "VRay To Arnold": {
-      "_call": "VRay2Arnold",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false ,
-      "_annotation": ""
-    },
-    "UDIM Make a pick": {
-      "_call": "udimMaker",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Delete Gamma Correct": {
-      "_call": "deleteGammaCorrect",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Bake Mental Ray": {
-      "_call": "MentalrayBaking",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
     "Light Translator": {
       "_call": "ICE_LightTransaltor",
       "_lang": "",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Add Light Flicker": {
-      "_call": "Add_Light_Flicker",
-      "_lang": "",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Texture Reloader": {
-      "_call": "texturesReloader",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Shader Transfer": {
-      "_call": "ShaderTransfer",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Mental Ray To Arnold": {
-      "_call": "mToA",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Maya To Ai": {
-      "_call": "MayaToAi",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Maya To VRay": {
-      "_call": "maya2VRay",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
@@ -474,13 +356,6 @@
   "TACTIC": {
     "Sequence Assets": {
       "_call": "_addAssets",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "My Tasks": {
-      "_call": "MyTasks",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
@@ -500,22 +375,8 @@
       "_retire": false,
       "_annotation": ""
     },
-    "Shot Explorer (Buggy/Beta)": {
-      "_call": "ShotExplorer",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": "Don't use."
-    },
     "Logout": {
       "_call": "Logout",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Scene Breakdown": {
-      "_call": "SceneBreakdown",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
@@ -846,6 +707,6 @@
       "_lang": "",
       "_retire": false,
       "_annotation": ""
-      } 
+      }
   }
 }
