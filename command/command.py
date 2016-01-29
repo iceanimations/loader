@@ -422,9 +422,10 @@ def sag(*args):
 # TACTIC #######################################################
 
 def _addAssets(*args):
-    import addAssets
-    reload(addAssets)
-    addAssets.Window().show()
+    if __tacticLogin():
+        import addAssets
+        reload(addAssets)
+        addAssets.Window().show()
     
 def __tacticLogin():
     # get the user
