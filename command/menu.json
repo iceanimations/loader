@@ -128,7 +128,7 @@
     }
   },
   "Animation": {
-    "Multi Shot Export (TACTIC)": {
+    "Multi Shot Export": {
       "_call": "launchMSE",
       "_leaf": true,
       "_lang": "",
@@ -258,13 +258,6 @@
     },
     "Enlarge HUD Fonts": {
       "_call": "EnlargeHUDFonts",
-      "_leaf": true,
-      "_lang": "",
-      "_retire": false,
-      "_annotation": ""
-    },
-    "Multi Shot Export": {
-      "_call": "submit_shot",
       "_leaf": true,
       "_lang": "",
       "_retire": false,
