@@ -135,6 +135,13 @@
       "_retire": false,
       "_annotation": ""
     },
+    "Multi Shot Export (Old)": {
+      "_call": "submit_shot",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "Studio Library (For Poses)": {
         "_call": "callStudioLibrary",
         "_leaf": true,
