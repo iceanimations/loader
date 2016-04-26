@@ -10,11 +10,12 @@ object_mattes['ID_STB']=(10,11,12)
 object_mattes['ID_HPP']=(13,14,15)
 
 material_mattes = {}
-material_mattes['ID_FHE']=(1,2,3)
+material_mattes['ID_FHI']=(1,2,3)
 material_mattes['ID_THT']=(4,5,6)
 material_mattes['ID_CTS']=(7,8,9)
-material_mattes['ID_Cornea']=(10,11,12)
-
+material_mattes['ID_CCG']=(10,11,12)
+material_mattes['ID_GFS']=(13,14,15)
+material_mattes['ID_EOI']=(16,17,18)
 
 object_mattesDD = {}
 object_mattesDD['ID_CDB']=(1,2,3)        #mansour, obaid, salem
