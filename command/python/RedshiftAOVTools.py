@@ -75,6 +75,8 @@ def addMaterialIDs(*args):
             pc.warning('%s already Exists'%name)
             continue
         node = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
+        if name == 'ID_FHI':
+            node.enableReflectionRefraction.set(1)
         node.rename(name)
         if pc.attributeQuery('name', n=node, exists=True):
             node.attr('name').set(name)
