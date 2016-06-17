@@ -665,7 +665,7 @@
       "_annotation": ""
     }
   },
-  "General": {
+  "Layout": {
     "Create Layout": {
       "_call": "_createLayout",
       "_leaf": true,
@@ -673,6 +673,15 @@
       "_retire": false,
       "_annotation": ""
     },
+    "Export Snapshots": {
+      "_call": "exportSnap",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
+  }
+  "General": {
     "Scene Bundle": {
       "_call": "bundleScene",
       "_leaf": true,

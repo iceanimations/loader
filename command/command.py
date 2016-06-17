@@ -14,13 +14,20 @@ site.addsitedir(r"R:\Pipe_Repo\Projects\TACTIC\app")
 site.addsitedir(r"R:\Pipe_Repo\Users\Hussain\utilities")
 winCache = []
 
-# General ######################################################
+# Layout #######################################################
 
 def _createLayout(*args):
     if __tacticLogin():
         import createLayout
         reload(createLayout)
         createLayout.Window().show()
+        
+def exportSnap(*args):
+    import exportSnapshots
+    reload(exportSnapshots)
+    exportSnapshots.Window().show()
+
+# General ######################################################
 
 def Asset_Manager(*args):
     import maya.cmds as mc
