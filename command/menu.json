@@ -680,7 +680,7 @@
       "_retire": false,
       "_annotation": ""
     }
-  }
+  },
   "General": {
     "Scene Bundle": {
       "_call": "bundleScene",
