@@ -96,6 +96,11 @@ def addAttrNanoScreen(*args):
 
 # Lighting #####################################################
 
+def launchLightFlicker(*args):
+    import lightFlicker
+    reload(lightFlicker)
+    lightFlicker.addFlicker()
+
 def _proxyCacheSwitch(*args):
     import proxyCacheSwitch
     reload(proxyCacheSwitch)

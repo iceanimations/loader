@@ -309,6 +309,13 @@
     }
   },
   "Lighting": {
+  "Add Light Flicker": {
+      "_call": "launchLightFlicker",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   "Fill In Out (Remove Overrides)": {
       "_call": "fillinout_RO",
       "_leaf": true,
