@@ -232,7 +232,7 @@ def addObjectIDs_DW(*args):
 
     redshiftUpdateActiveAovList()
     
-def addIDS_DW(*args):
+def addIDs_DW(*args):
     addMaterialIDs_DW()
     addObjectIDs_DW()
     
