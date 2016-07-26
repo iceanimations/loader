@@ -30,6 +30,12 @@ material_mattesDD['ID_BFO']=(1,2,3)
 material_mattesDD['ID_TIT']=(4,5,6)
 material_mattesDD['ID_EYE']=(7,8,9)
 
+object_mattesDW = {}
+object_mattesDW['DSOjb_ID']=(4,5,6)
+
+material_mattesDW = {}
+material_mattesDW['DSMat_ID']=(1,2,3)
+
 
 requiredTypes = [
     'Ambient Occlusion',
@@ -41,6 +47,8 @@ requiredTypes = [
     'Refractions',
     'Specular Lighting',
     'Sub Surface Scatter']
+
+requiredTypes_DW = ['Motion Vectors', 'Volume Lighting']
 
 def redshiftAOVExists(name):
     for node in pc.ls(type='RedshiftAOV'):
@@ -170,12 +178,30 @@ def fixAOVPrefixes(*args):
         node.filePrefix.set(ps)
         node.exrCompression.set(3)
         
+def fixAOVPrefixes_DW(*args):
+
+    prefixString='<RenderLayer>\<RenderLayer>_<AOV>\<RenderLayer>_<AOV>_'
+
+    for node in pc.ls(type='RedshiftAOV'):
+        name = node.name().split('|')[-1].split(':')[-1]
+        if name.startswith('rsAov_'):
+            name = name[6:]
+        if pc.attributeQuery('name', n=node, exists=True):
+            node.attr('name').set(name)
+        ps = re.compile('<AOV>', re.I).sub(name, prefixString)
+        node.filePrefix.set(ps)
+        node.exrCompression.set(3)
+        
 def setFilenamePrefix(*args):
     pc.setAttr("redshiftOptions.imageFilePrefix", "<Camera>/<RenderLayer>/<RenderLayer>_<AOV>/<RenderLayer>_<AOV>_", type="string")
     pc.setAttr("defaultRenderGlobals.imageFilePrefix", "<Camera>/<RenderLayer>/<RenderLayer>_<AOV>/<RenderLayer>_<AOV>_", type="string")
+    
+def setFilenamePrefix_DW(*args):
+    pc.setAttr("redshiftOptions.imageFilePrefix", "<RenderLayer>/<RenderLayer>_<AOV>/<RenderLayer>_<AOV>_", type="string")
+    pc.setAttr("defaultRenderGlobals.imageFilePrefix", "<RenderLayer>/<RenderLayer>_<AOV>/<RenderLayer>_<AOV>_", type="string")
         
-def addMaterialIDs_DingDong(*args):
-    for name, ids in material_mattesDD.items():
+def addMaterialIDs_DW(*args):
+    for name, ids in material_mattesDW.items():
         if redshiftAOVExists(name):
             pc.warning('%s already Exists'%name)
             continue
@@ -190,8 +216,8 @@ def addMaterialIDs_DingDong(*args):
 
     redshiftUpdateActiveAovList()
     
-def addObjectIDs_DingDong(*argsobject_mattes):
-    for name, ids in object_mattesDD.items():
+def addObjectIDs_DW(*args):
+    for name, ids in object_mattesDW.items():
         if redshiftAOVExists(name):
             pc.warning('%s already Exists'%name)
             continue
@@ -205,6 +231,21 @@ def addObjectIDs_DingDong(*argsobject_mattes):
         node.blueId.set(ids[2])
 
     redshiftUpdateActiveAovList()
+    
+def addIDS_DW(*args):
+    addMaterialIDs_DW()
+    addObjectIDs_DW()
+    
+def addPasses_DW(*args):
+    addPasses()
+    existingTypes = [node.aovType.get() for node in pc.ls(type='RedshiftAOV')]
+    passTypes = [typ for typ in requiredTypes_DW if typ not in existingTypes]
+    map(lambda x: pc.rsCreateAov(type=x), passTypes)
+    try:
+        if not pc.about(batch=True):
+            pc.mel.redshiftUpdateActiveAovList()
+    except:
+        pass
 
 
 def rsAOVToolShow():
@@ -216,9 +257,8 @@ def rsAOVToolShow():
         with pc.columnLayout(w=200):
             for func in [addPasses, addMaterialIDs, addObjectIDs,
                     correctObjectID, addObjectIDsFromSelection,
-                    fixAOVPrefixes, setFilenamePrefix,
-                    addMaterialIDs_DingDong,
-                    addObjectIDs_DingDong]:
+                    fixAOVPrefixes, setFilenamePrefix, addPasses_DW, addIDs_DW, fixAOVPrefixes_DW, setFilenamePrefix_DW,
+                    addIDs_DW]:
                 pc.button(label=func.func_name, c=func, w=200)
     win.show()
 
