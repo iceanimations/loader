@@ -257,8 +257,8 @@ def rsAOVToolShow():
         with pc.columnLayout(w=200):
             for func in [addPasses, addMaterialIDs, addObjectIDs,
                     correctObjectID, addObjectIDsFromSelection,
-                    fixAOVPrefixes, setFilenamePrefix, addPasses_DW, addIDs_DW, fixAOVPrefixes_DW, setFilenamePrefix_DW,
-                    addIDs_DW]:
+                    fixAOVPrefixes, setFilenamePrefix, addPasses_DW, addIDs_DW,
+                    fixAOVPrefixes_DW, setFilenamePrefix_DW]:
                 pc.button(label=func.func_name, c=func, w=200)
     win.show()
 
