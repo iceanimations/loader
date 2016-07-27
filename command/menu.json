@@ -544,7 +544,7 @@
     }
   },
   "Utilities": {
-    "Barajoun Scene Check": {
+    "ICE Scene Check": {
       "_call": "SceneCheck",
       "_leaf": true,
       "_lang": "",
