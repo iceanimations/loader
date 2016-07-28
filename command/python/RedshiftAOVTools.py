@@ -31,10 +31,10 @@ material_mattesDD['ID_TIT']=(4,5,6)
 material_mattesDD['ID_EYE']=(7,8,9)
 
 object_mattesDW = {}
-object_mattesDW['DSOjb_ID']=(4,5,6)
+object_mattesDW['DSObj_ID']=(1,2,3)
 
 material_mattesDW = {}
-material_mattesDW['DSMat_ID']=(1,2,3)
+material_mattesDW['DSMat_ID']=(4,5,6)
 
 
 requiredTypes = [
