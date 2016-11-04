@@ -52,7 +52,7 @@ global proc LockMesh ()
     for ($node in $sel)
     {
         catch(`setAttr ($node +".overrideEnabled" ) 1`);
-        catch(`setAttr ($node +".overrideDisplayType") 2`)`;
+        catch(`setAttr ($node +".overrideDisplayType") 2`);
     }
 
 }
