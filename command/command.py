@@ -94,6 +94,11 @@ def addAttrNanoScreen(*args):
     reload(nanoScreenMark)
     nanoScreenMark.addAttrToFileNode()
 
+def postfixHier(*args):
+    import postfixHierarchy
+    reload(postfixHierarchy)
+    postfixHierarchy.Window()
+
 # Lighting #####################################################
 
 def launchLightFlicker(*args):
