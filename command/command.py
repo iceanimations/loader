@@ -54,6 +54,11 @@ def bundleScene(*args):
     reload(sb)
     sb.Window().show()
 
+def bundleScene2(*args):
+    import sceneBundle2 as sb
+    reload(sb)
+    sb.Window().show()
+
 def Save_Increment(*args):
     site.addsitedir(r"R:\Python_Scripts\plugins\incrementSave\src")
     import logic
@@ -93,6 +98,11 @@ def addAttrNanoScreen(*args):
     from .python import nanoScreenMark
     reload(nanoScreenMark)
     nanoScreenMark.addAttrToFileNode()
+
+def postfixHier(*args):
+    import postfixHierarchy
+    reload(postfixHierarchy)
+    postfixHierarchy.Window()
 
 # Lighting #####################################################
 

@@ -4,10 +4,7 @@ This modules contains the structure of ICE's script menu that is drawn inside Ma
 
 import pymel.core as pc
 from command import command
-import mayaStartup
-reload(mayaStartup)
-import json, os, sys, random
-from site import addsitedir as asd
+import json, os
 op = os.path
 
 menu_name = 'ICE_Menu'
@@ -27,11 +24,11 @@ def construct_menu(parent, structure = {}):
             if leaf:
                 try:
                     call = Menu.call(call = value['_call'])
-                except Exception as e:
+                except Exception:
                     def call(*args): print 'Nothing to call'
-                    
+
                 kwargs['c'] = call
-                
+
                 pc.menuItem(**kwargs)
 
             else:
@@ -40,7 +37,7 @@ def construct_menu(parent, structure = {}):
                 construct_menu(pc.subMenuItem(**kwargs), value)
 
 def create_menu(*args):
-    
+
     reload(command)
     global Menu
     Menu = command.Menu

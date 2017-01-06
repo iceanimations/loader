@@ -51,8 +51,8 @@ global proc LockMesh ()
 
     for ($node in $sel)
     {
-        setAttr ($node +".overrideEnabled" ) 1;
-        setAttr ($node +".overrideDisplayType") 2;
+        catch(`setAttr ($node +".overrideEnabled" ) 1`);
+        catch(`setAttr ($node +".overrideDisplayType") 2`);
     }
 
 }
@@ -66,7 +66,7 @@ global proc HideJoints ()
 
     for ($node in $sel)
     {
-        setAttr ($node +".drawStyle") 2;
+        catch(`setAttr ($node +".drawStyle") 2`);
     }
 }
 
@@ -81,8 +81,8 @@ global proc UnlockMesh ()
 
     for ($node in $sel)
     {
-        setAttr ($node +".overrideEnabled" ) 0;
-        setAttr ($node +".overrideDisplayType") 2;
+        catch( `setAttr ($node +".overrideEnabled" ) 0` );
+        catch( `setAttr ($node +".overrideDisplayType") 2` );
     }
 
 }
@@ -97,7 +97,7 @@ global proc UnHideJoints ()
     for ($node in $sel)
     {
 
-        setAttr ($node +".drawStyle") 0;
+        catch(`setAttr ($node +".drawStyle") 0`);
     }
 }
 
