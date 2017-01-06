@@ -53,6 +53,11 @@ def bundleScene(*args):
     import sceneBundle as sb
     reload(sb)
     sb.Window().show()
+    
+def bundleSceneOld(*args):
+    import sceneBundleOld as sb
+    reload(sb)
+    sb.Window().show()
 
 def bundleScene2(*args):
     import sceneBundle2 as sb
