@@ -46,7 +46,10 @@ requiredTypes = [
     'Reflections',
     'Refractions',
     'Specular Lighting',
-    'Sub Surface Scatter']
+    'Sub Surface Scatter',
+    'World Position',
+    'Normals',
+    'Object-Space Positions']
 
 requiredTypes_DW = ['Motion Vectors', 'Volume Lighting']
 
