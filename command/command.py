@@ -165,6 +165,11 @@ def RedshiftAOVTools(*args):
 
 # Animations ###################################################
 
+def selectMarker(*args):
+    import markerSelect
+    reload(markerSelect)
+    markerSelect.Window().show()
+
 def launchMSE(*args):
     if __tacticLogin():
         import multiShotExport as mse
