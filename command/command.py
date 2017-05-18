@@ -29,6 +29,11 @@ def exportSnap(*args):
 
 # General ######################################################
 
+def duplicatePF(*args):
+    import duplicatePerFrame
+    reload(duplicatePerFrame)
+    duplicatePerFrame.Window().show()
+
 def Asset_Manager(*args):
     import maya.cmds as mc
     site.addsitedir(r"R:\Pipe_Repo\Projects\DAM\bin")
