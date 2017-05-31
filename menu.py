@@ -10,10 +10,6 @@ import re
 
 menu_name = 'ICE_Menu'
 #spice = ['Scripts']
-# add the custom plugins directory to MAYA_PLUG_IN_PATH
-version = re.search('\\d{4}', pc.about(v=True)).group()
-customPluginPath = op.normpath(op.join('R:/maya_plugins', version))
-os.environ['MAYA_PLUG_IN_PATH'] += ';'+ customPluginPath
 
 def construct_menu(parent, structure = {}):
 
