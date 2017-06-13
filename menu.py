@@ -17,19 +17,20 @@ MENU = None
 # spice = ['Scripts']
 
 
-def ensure_path_in_env_var(new_path, env_var='MAYA_PLUG_IN_PATH'):
+def add_path(new_path, env_var='MAYA_PLUG_IN_PATH'):
     '''Make sure that given path is included in the env variable'''
     paths = os.environ[env_var]
     paths = paths.split(';')
     if new_path not in paths:
         paths.append(new_path)
-        os.environ[env_var] = ';'.join(new_path)
+        os.environ[env_var] = ';'.join(paths)
 
 
 def add_plugin_path():
     '''Add plugin path for the current version of maya'''
     plugin_path = CUSTOM_PLUG_IN_PATH % pc.about(v=True)
-    ensure_path_in_env_var(plugin_path, 'MAYA_PLUG_IN_PATH')
+    print 'adding %s to plugin paths'  % plugin_path
+    add_path(plugin_path, 'MAYA_PLUG_IN_PATH')
 
 
 def construct_menu(parent, structure=None):
