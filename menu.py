@@ -6,7 +6,7 @@ Maya
 import pymel.core as pc
 import json
 import os
-from .command import command
+from command import command
 
 OS_PATH = os.path
 
