@@ -1,18 +1,41 @@
 '''
-This modules contains the structure of ICE's script menu that is drawn inside Maya
+This modules contains the structure of ICE's script menu that is drawn inside
+Maya
 '''
 
 import pymel.core as pc
-from command import command
-import json, os
-op = os.path
-import re
+import json
+import os
+from .command import command
 
-menu_name = 'ICE_Menu'
-#spice = ['Scripts']
+OS_PATH = os.path
 
-def construct_menu(parent, structure = {}):
 
+CUSTOM_PLUG_IN_PATH = 'r:/maya_plugins/%s'
+MENU_NAME = 'ICE_Menu'
+MENU = None
+# spice = ['Scripts']
+
+
+def ensure_path_in_env_var(new_path, env_var='MAYA_PLUG_IN_PATH'):
+    '''Make sure that given path is included in the env variable'''
+    paths = os.environ[env_var]
+    paths = paths.split(';')
+    if new_path not in paths:
+        paths.append(new_path)
+        os.environ[env_var] = ';'.join(new_path)
+
+
+def add_plugin_path():
+    '''Add plugin path for the current version of maya'''
+    plugin_path = CUSTOM_PLUG_IN_PATH % pc.about(v=True)
+    ensure_path_in_env_var(plugin_path, 'MAYA_PLUG_IN_PATH')
+
+
+def construct_menu(parent, structure=None):
+    ''' Makes a menu given a structure '''
+    if structure is None:
+        structure = {}
     for item in sorted(structure):
         value = structure[item]
         retired = value.get('_retire', False)
@@ -24,9 +47,11 @@ def construct_menu(parent, structure = {}):
 
             if leaf:
                 try:
-                    call = Menu.call(call = value['_call'])
+                    call = MENU.call(call=value['_call'])
                 except Exception:
-                    def call(*args): print 'Nothing to call'
+                    def call(*args):
+                        'place holder function for no calls'
+                        print 'Nothing to call', args
 
                 kwargs['c'] = call
 
@@ -37,19 +62,20 @@ def construct_menu(parent, structure = {}):
                 kwargs['to'] = True
                 construct_menu(pc.subMenuItem(**kwargs), value)
 
-def create_menu(*args):
 
+def create_menu(*args):
+    '''Creates the menu in maya'''
     reload(command)
-    global Menu
-    Menu = command.Menu
+    global MENU
+    MENU = command.MENU
     menu_title = 'ICE Scripts' #%(random.choice(spice))
     gMainWindow = pc.mel.eval('$tmpVar = $gMainWindow')
-    if pc.menu(menu_name, exists = True):
-        pc.deleteUI(menu_name)
-    menu = pc.menu(menu_name, parent = gMainWindow, label = menu_title,
+    if pc.menu(MENU_NAME, exists = True):
+        pc.deleteUI(MENU_NAME)
+    menu = pc.menu(MENU_NAME, parent = gMainWindow, label = menu_title,
                    to = True)
 
-    with open(op.join(op.dirname(__file__), 'command', 'menu.json'), 'r') as f:
+    with open(OS_PATH.join(OS_PATH.dirname(__file__), 'command', 'menu.json'), 'r') as f:
         menu_structure = json.load(f)
 
     construct_menu(menu, menu_structure)
@@ -65,8 +91,11 @@ def create_menu(*args):
     return menu
 
 
-
 def startup():
+    try:
+        add_plugin_path()
+    except Exception as e:
+        pc.warning('Cannot add plugin path %r' % e)
     create_menu()
     #mayaStartup.start()
 
