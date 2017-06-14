@@ -29,7 +29,6 @@ def add_path(new_path, env_var='MAYA_PLUG_IN_PATH'):
 def add_plugin_path():
     '''Add plugin path for the current version of maya'''
     plugin_path = CUSTOM_PLUG_IN_PATH % pc.about(v=True)
-    print 'adding %s to plugin paths'  % plugin_path
     add_path(plugin_path, 'MAYA_PLUG_IN_PATH')
 
 
@@ -68,19 +67,19 @@ def create_menu(*args):
     '''Creates the menu in maya'''
     reload(command)
     global MENU
-    MENU = command.MENU
+    MENU = command.Menu
     menu_title = 'ICE Scripts' #%(random.choice(spice))
     gMainWindow = pc.mel.eval('$tmpVar = $gMainWindow')
-    if pc.menu(MENU_NAME, exists = True):
+    if pc.menu(MENU_NAME, exists=True):
         pc.deleteUI(MENU_NAME)
-    menu = pc.menu(MENU_NAME, parent = gMainWindow, label = menu_title,
-                   to = True)
+    menu = pc.menu(MENU_NAME, parent=gMainWindow, label=menu_title,
+                   to=True)
 
     with open(OS_PATH.join(OS_PATH.dirname(__file__), 'command', 'menu.json'), 'r') as f:
         menu_structure = json.load(f)
 
     construct_menu(menu, menu_structure)
-    pc.menuItem(parent = menu, divider = True, to = True)
+    pc.menuItem(parent=menu, divider=True, to=True)
     # pc.menuItem(parent = menu,
     #             label = 'Search ..',
     #             command = lambda *arg: None,
