@@ -68,15 +68,15 @@ def create_menu(*args):
     reload(command)
     global MENU
     MENU = command.Menu
-    menu_title = 'ICE Scripts' #%(random.choice(spice))
+    menu_title = 'ICE Scripts'  # %(random.choice(spice))
     gMainWindow = pc.mel.eval('$tmpVar = $gMainWindow')
     if pc.menu(MENU_NAME, exists=True):
         pc.deleteUI(MENU_NAME)
-    menu = pc.menu(MENU_NAME, parent=gMainWindow, label=menu_title,
-                   to=True)
+    menu = pc.menu(MENU_NAME, parent=gMainWindow, label=menu_title, to=True)
 
-    with open(OS_PATH.join(OS_PATH.dirname(__file__), 'command', 'menu.json'), 'r') as f:
-        menu_structure = json.load(f)
+    with open(OS_PATH.join(OS_PATH.dirname(__file__), 'command', 'menu.json'),
+              'r') as file_:
+        menu_structure = json.load(file_)
 
     construct_menu(menu, menu_structure)
     pc.menuItem(parent=menu, divider=True, to=True)
@@ -84,19 +84,20 @@ def create_menu(*args):
     #             label = 'Search ..',
     #             command = lambda *arg: None,
     #             ann = 'Search the menu')
-    pc.menuItem(parent = menu,
-                label = 'Rebuild This Menu',
-                command = create_menu,
-                ann = 'This will reconstruct the entire menu')
+    pc.menuItem(parent=menu,
+                label='Rebuild This Menu',
+                command=create_menu,
+                ann='This will reconstruct the entire menu')
     return menu
 
 
 def startup():
+    ''' function startup '''
     try:
         add_plugin_path()
     except Exception as e:
         pc.warning('Cannot add plugin path %r' % e)
     create_menu()
-    #mayaStartup.start()
+    # mayaStartup.start()
 
 startup()
