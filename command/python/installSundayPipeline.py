@@ -3,26 +3,26 @@ import maya.cmds as mc
 import ctypes
 from ctypes.wintypes import MAX_PATH
 
-plugin_path = 'R:/Python_Scripts/plugins/Sunday'
-plugin_name = 'SundayPluginPublic'
+PLUGIN_PATH = 'R:/Python_Scripts/plugins/Sunday'
+PLUGIN_NAME = 'SundayPluginPublic'
 
 
 def add_path():
     mayapp = os.environ['MAYA_PLUG_IN_PATH']
     mayapp = mayapp.split(';')
-    if plugin_path not in mayapp:
-        mayapp.append(plugin_path)
-        os.environ['MAYA_PLUG_IN_PATH']=';'.join(mayapp)
+    if PLUGIN_PATH not in mayapp:
+        mayapp.append(PLUGIN_PATH)
+        os.environ['MAYA_PLUG_IN_PATH'] = ';'.join(mayapp)
 
 
 def add_path_env():
     env_file_path = os.path.join(docFolder(), 'maya', 'Maya.env')
-    myline = "MAYA_PLUG_IN_PATH=%s;%%MAYA_PLUG_IN_PATH%%" % plugin_path
+    myline = "MAYA_PLUG_IN_PATH=%s;%%MAYA_PLUG_IN_PATH%%" % PLUGIN_PATH
     path_exists = False
     if os.path.exists(env_file_path):
         with open(env_file_path) as envfile:
             if myline in envfile.readlines():
-                path_exists=True
+                path_exists = True
     if not path_exists:
         with open(env_file_path, 'a') as envfile:
             envfile.writelines([myline])
@@ -38,8 +38,9 @@ def docFolder():
     else:
         return os.path.join(os.environ['USERPROFILE'], 'Documents')
 
+
 def load_plugin():
-    mc.loadPlugin(plugin_name)
+    mc.loadPlugin(PLUGIN_NAME)
 
 
 def install():
