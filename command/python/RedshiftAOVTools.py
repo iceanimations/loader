@@ -16,6 +16,8 @@ material_mattes['ID_CTS']=(7,8,9)
 material_mattes['ID_CCG']=(10,11,12)
 material_mattes['ID_GFS']=(13,14,15)
 material_mattes['ID_EOI']=(16,17,18)
+material_mattes['ID_EOI1']=(19,20,21)
+
 
 object_mattesDD = {}
 object_mattesDD['ID_CDB']=(1,2,3)        #mansour, obaid, salem
