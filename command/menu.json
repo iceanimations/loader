@@ -128,6 +128,13 @@
     }
   },
   "Animation": {
+    "Mocap To Rig": {
+      "_call": "mocapToRig",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
     "Marker Select": {
       "_call": "selectMarker",
       "_leaf": true,
