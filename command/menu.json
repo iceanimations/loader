@@ -129,7 +129,7 @@
   },
   "Animation": {
     "Mocap To Rig": {
-      "_call": "mocapToRig",
+      "_call": "mocaptorig",
       "_leaf": true,
       "_lang": "",
       "_retire": false,

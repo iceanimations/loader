@@ -170,6 +170,9 @@ def RedshiftAOVTools(*args):
 
 # Animations ###################################################
 
+def mocaptorig():
+    pc.mel.eval('source "R:/Python_Scripts/plugins/mocapToRig/src/launch.mel";')
+    
 def selectMarker(*args):
     import markerSelect
     reload(markerSelect)
