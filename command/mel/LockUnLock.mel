@@ -106,7 +106,6 @@ global proc UnHideJoints ()
 
 global proc LockNode ()
 {
-
     $sel = `ls -sl`;
     lockNode $sel;
 }
@@ -116,7 +115,6 @@ global proc LockNode ()
 
 global proc UnLockNode ()
 {
-
     $sel = `ls -sl`;
     lockNode -lock off $sel;
 }
@@ -126,7 +124,6 @@ global proc UnLockNode ()
 
 global proc clnTSMnode ()
 {
-
     $sel = `ls -type script`;
     select $sel;
     delete;

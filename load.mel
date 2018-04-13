@@ -6,7 +6,7 @@ print $MENU;
 python("import pymel.core as pc"+
 "\nfrom site import addsitedir as asd"+
 "\nasd(r'"+ $MENU + "')"+
-"\nimport menu"
+"\nimport icemenu"
 );
 //}
 
