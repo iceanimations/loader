@@ -583,6 +583,12 @@ def callStudioLibrary(*args):
     import studiolibrary
     studiolibrary.main()
 
+
+def substanceImporterApplyToSelected(*args):
+    import SubstanceImporter
+    SubstanceImporter.apply_to_selected()
+
+
 # MEL ##########################################################
 for item in os.listdir(LIBMEL):
     import pymel.core as pc
