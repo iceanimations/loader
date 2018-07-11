@@ -279,6 +279,13 @@
     }
   },
   "Look Dev": {
+    "SubstanceImporter (Apply to Selected)": {
+        "_call": "substanceImporterApplyToSelected",
+        "_leaf": true,
+        "_lang": "",
+        "_retire": false,
+        "_annotation": ""
+    },
     "Postfix Hierarchy": {
       "_call": "postfixHier",
       "_leaf": true,
