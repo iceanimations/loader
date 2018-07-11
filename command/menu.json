@@ -703,6 +703,13 @@
     }
   },
   "General": {
+  "Replace Proxies": {
+      "_call": "repPro",
+      "_leaf": true,
+      "_lang": "",
+      "_retire": false,
+      "_annotation": ""
+    },
   "Duplicate Per Frame": {
       "_call": "duplicatePF",
       "_leaf": true,

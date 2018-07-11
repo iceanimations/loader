@@ -29,6 +29,11 @@ def exportSnap(*args):
 
 # General ######################################################
 
+def repPro(*args):
+    if __tacticLogin():
+        import replaceProxies
+        replaceProxies.replace()
+
 def duplicatePF(*args):
     import duplicatePerFrame
     reload(duplicatePerFrame)
