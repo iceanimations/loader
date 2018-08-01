@@ -17,6 +17,8 @@ material_mattes['ID_CCG']=(10,11,12)
 material_mattes['ID_GFS']=(13,14,15)
 material_mattes['ID_EOI']=(16,17,18)
 material_mattes['ID_EOI1']=(19,20,21)
+material_mattes['ID_FHI1']=(22,23,24)
+
 
 
 object_mattesDD = {}
@@ -89,7 +91,7 @@ def addMaterialIDs(*args):
             pc.warning('%s already Exists'%name)
             continue
         node = pc.PyNode(pc.rsCreateAov(type='Puzzle Matte'))
-        if name == 'ID_FHI':
+        if name in ['ID_FHI', 'ID_FHI1']:
             node.enableReflectionRefraction.set(1)
         node.rename(name)
         if pc.attributeQuery('name', n=node, exists=True):
