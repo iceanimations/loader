@@ -53,8 +53,7 @@ requiredTypes = [
     'Sub Surface Scatter',
     'World Position',
     'Normals',
-    'Object-Space Positions',
-    'Motion Vectors']
+    'Object-Space Positions']
 
 requiredTypes_DW = ['Motion Vectors', 'Volume Lighting']
 
