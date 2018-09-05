@@ -238,7 +238,7 @@ def Fill_In_Out(*args):
 def submit_shot(*args):
     import multishot
     reload(multishot)
-    shot_subm.Window().show()
+    multishot.Window().show()
     
 # Rigging #######################################################
 
