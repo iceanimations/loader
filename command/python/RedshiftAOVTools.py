@@ -18,6 +18,8 @@ material_mattes['ID_GFS'] = (13, 14, 15)
 material_mattes['ID_EOI'] = (16, 17, 18)
 material_mattes['ID_EOI1'] = (19, 20, 21)
 material_mattes['ID_FHI1'] = (22, 23, 24)
+material_mattes['ID_EOI2'] = (25, 26, 27)
+material_mattes['ID_EOI3'] = (28, 29, 30)
 
 object_mattesDD = {}
 object_mattesDD['ID_CDB'] = (1, 2, 3)  # mansour, obaid, salem
@@ -74,7 +76,6 @@ def addPasses(*args):
     passTypes = [typ for typ in requiredTypes if typ not in existingTypes]
     for _pt in passTypes:
         node = pc.PyNode(pc.rsCreateAov(type=_pt))
-        print node, _pt
         if _pt in modifications:
             for attr, value in modifications[_pt].items():
                 node.attr(attr).set(value)
