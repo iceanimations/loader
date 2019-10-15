@@ -44,7 +44,7 @@ requiredTypes = [
     'Ambient Occlusion', 'Depth', 'Diffuse Filter', 'Diffuse Lighting',
     'Global Illumination', 'Reflections', 'Refractions', 'Specular Lighting',
     'Sub Surface Scatter', 'World Position', 'Normals',
-    'Object-Space Positions'
+    'Object-Space Positions', 'Shadows'
 ]
 
 requiredTypes_DW = ['Motion Vectors', 'Volume Lighting']
