@@ -41,13 +41,25 @@ material_mattesDW = {}
 material_mattesDW['DSMat_ID'] = (4, 5, 6)
 
 requiredTypes = [
-    'Ambient Occlusion', 'Depth', 'Diffuse Filter', 'Diffuse Lighting',
-    'Global Illumination', 'Reflections', 'Refractions', 'Specular Lighting',
-    'Sub Surface Scatter', 'World Position', 'Normals',
-    'Object-Space Positions', 'Shadows'
+        'Ambient Occlusion',
+        'Depth',
+        'Diffuse Filter',
+        'Diffuse Lighting',
+        'Global Illumination',
+        'Reflections',
+        'Refractions',
+        'Specular Lighting',
+        'Sub Surface Scatter',
+        'World Position',
+        'Normals',
+        'Object-Space Positions',
+        'Shadows'
 ]
 
-requiredTypes_DW = ['Motion Vectors', 'Volume Lighting']
+requiredTypes_DW = [
+        'Motion Vectors',
+        'Volume Lighting'
+]
 
 modifications = {
         'World Position': {'scaleX': -1}
