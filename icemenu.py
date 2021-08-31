@@ -6,30 +6,46 @@ Maya
 import pymel.core as pc
 import json
 import os
+try:
+    import configparser
+except ImportError:
+    import ConfigParser as configparser
+import site
 from command import command
 
 OS_PATH = os.path
 
-
 CUSTOM_PLUG_IN_PATH = 'r:/maya_plugins/%s'
 MENU_NAME = 'ICE_Menu'
 MENU = None
+SITE_DIRS = os.pathsep.join([
+    r"R:\Python_Scripts\plugins",
+    r"R:\Python_Scripts\plugins\utilities",
+    r"R:\Pipe_Repo\Projects\TACTIC",
+    r"R:\Pipe_Repo\Projects\TACTIC\app",
+    r"R:\Pipe_Repo\Users\Hussain\utilities"
+])
 # spice = ['Scripts']
 
 
 def add_path(new_path, env_var='MAYA_PLUG_IN_PATH'):
     '''Make sure that given path is included in the env variable'''
     paths = os.environ[env_var]
-    paths = paths.split(';')
+    paths = paths.split(os.pathsep)
     if new_path not in paths:
         paths.append(new_path)
-        os.environ[env_var] = ';'.join(paths)
+        os.environ[env_var] = os.pathsep.join(paths)
 
 
 def add_plugin_path():
     '''Add plugin path for the current version of maya'''
     plugin_path = CUSTOM_PLUG_IN_PATH % pc.about(v=True)
     add_path(plugin_path, 'MAYA_PLUG_IN_PATH')
+
+def add_site_dirs():
+    '''Add site dirs to python environment'''
+    for path in SITE_DIRS.split(os.pathsep):
+        site.addsitedir(path)
 
 
 def construct_menu(parent, structure=None):
@@ -91,10 +107,54 @@ def create_menu(*args):
     return menu
 
 
+def load_config(filename='loader.cfg'):
+    '''read variables from a config file'''
+    config_path = os.path.join(os.path.dirname(__file__), filename) 
+    config_parser = configparser.RawConfigParser()
+    config_parser.read(config_path)
+
+    global CUSTOM_PLUG_IN_PATH
+    try:
+        CUSTOM_PLUG_IN_PATH = config_parser.get('Paths', 'CUSTOM_PLUG_IN_PATH')
+        if not CUSTOM_PLUG_IN_PATH.endswith('%s'):
+            CUSTOM_PLUG_IN_PATH = os.path.join(CUSTOM_PLUG_IN_PATH, '%s')
+    except (configparser.NoOptionError, configparser.NoSectionError ):
+        pass
+
+    global MENU_NAME
+    try:
+        MENU_NAME = config_parser.get('Menu', 'name')
+    except (configparser.NoOptionError, configparser.NoSectionError ):
+        pass
+
+    global SITE_DIRS
+    try:
+        SITE_DIRS = config_parser.get('Paths', 'site_dirs')
+    except (configparser.NoOptionError, configparser.NoSectionError ):
+        pass
+
+
+def dump_config(filename='loader.cfg'):
+    '''Dump current variables to a config file'''
+    config_path = os.path.join(os.path.dirname(__file__), filename) 
+    config_parser = configparser.RawConfigParser()
+
+    config_parser.add_section('Paths')
+    config_parser.set('Paths', 'CUSTOM_PLUG_IN_PATH', CUSTOM_PLUG_IN_PATH)
+    config_parser.set('Paths', 'SITE_DIRS', SITE_DIRS)
+    config_parser.add_section('Menu')
+    config_parser.set('Menu', 'name', MENU_NAME)
+
+    with open(path, 'w+') as _file:
+        config_parser.write(_file)
+
+
 def startup():
     ''' function startup '''
+    load_config()
     try:
         add_plugin_path()
+        add_site_dirs()
     except Exception as e:
         pc.warning('Cannot add plugin path %r' % e)
     create_menu()

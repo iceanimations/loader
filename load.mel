@@ -1,13 +1,40 @@
 //if (`getenv user` != "Administrator"){
 
+
+global proc gLoader_load_xyz() {}
+
+string $result = `whatIs gLoader_load_xyz`;
+string $tokens[];
+tokenize $result " " $tokens;
+
+string $path = "";
+int $x;
+for ($x=4; $x<size($tokens); $x++) {
+  string $cur = $tokens[$x];
+  if ($cur == "//") {
+    break;
+  }
+  if ($path != "") {
+    $path += " ";
+  }
+  $path += $cur;
+}
+
+
 // add the path to where the directory exists and accessible to clients
-string $MENU = "r:/Pipe_Repo/Users/Hussain/utilities/loader";
-print $MENU;
-python("import pymel.core as pc"+
-"\nfrom site import addsitedir as asd"+
-"\nasd(r'"+ $MENU + "')"+
-"\nimport icemenu"
+// string $MENU = "r:/Pipe_Repo/Users/Hussain/utilities/loader";
+print $path;
+string $py_cmd = (
+  "import pymel.core as pc"+
+  "\nimport os.path as op"+
+  "\nfrom site import addsitedir as asd"+
+  "\nasd(op.dirname(r'"+ $path + "'))"+
+  "\nimport icemenu"
 );
+
+print $py_cmd;
+python($py_cmd);
+
 //}
 
 //global proc string fromNativePath ( string $strFile )
