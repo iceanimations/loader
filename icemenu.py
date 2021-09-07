@@ -18,13 +18,13 @@ OS_PATH = os.path
 CUSTOM_PLUG_IN_PATH = 'r:/maya_plugins/%s'
 MENU_NAME = 'ICE_Menu'
 MENU = None
-SITE_DIRS = os.pathsep.join([
+SITE_DIRS = [
     r"R:\Python_Scripts\plugins",
     r"R:\Python_Scripts\plugins\utilities",
     r"R:\Pipe_Repo\Projects\TACTIC",
     r"R:\Pipe_Repo\Projects\TACTIC\app",
     r"R:\Pipe_Repo\Users\Hussain\utilities"
-])
+]
 # spice = ['Scripts']
 
 
@@ -44,7 +44,7 @@ def add_plugin_path():
 
 def add_site_dirs():
     '''Add site dirs to python environment'''
-    for path in SITE_DIRS.split(os.pathsep):
+    for path in SITE_DIRS:
         site.addsitedir(path)
 
 
@@ -129,7 +129,8 @@ def load_config(filename='loader.cfg'):
 
     global SITE_DIRS
     try:
-        SITE_DIRS = config_parser.get('Paths', 'site_dirs')
+        _site_dirs = config_parser.get('Paths', 'site_dirs')
+        SITE_DIRS = [path.strip() for path in _site_dirs.split(os.pathsep)]
     except (configparser.NoOptionError, configparser.NoSectionError ):
         pass
 
@@ -141,11 +142,11 @@ def dump_config(filename='loader.cfg'):
 
     config_parser.add_section('Paths')
     config_parser.set('Paths', 'CUSTOM_PLUG_IN_PATH', CUSTOM_PLUG_IN_PATH)
-    config_parser.set('Paths', 'SITE_DIRS', SITE_DIRS)
+    config_parser.set('Paths', 'SITE_DIRS', ';\n'.join(SITE_DIRS))
     config_parser.add_section('Menu')
     config_parser.set('Menu', 'name', MENU_NAME)
 
-    with open(path, 'w+') as _file:
+    with open(filename, 'w+') as _file:
         config_parser.write(_file)
 
 
