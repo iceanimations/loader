@@ -17,6 +17,7 @@ OS_PATH = os.path
 
 CUSTOM_PLUG_IN_PATH = 'r:/maya_plugins/%s'
 MENU_NAME = 'ICE_Menu'
+MENU_TITLE = 'Ice Scripts'
 MENU = None
 SITE_DIRS = [
     r"R:\Python_Scripts\plugins",
@@ -84,11 +85,11 @@ def create_menu(*args):
     reload(command)
     global MENU
     MENU = command.Menu
-    menu_title = 'ICE Scripts'  # %(random.choice(spice))
     gMainWindow = pc.mel.eval('$tmpVar = $gMainWindow')
+    print(MENU_NAME)
     if pc.menu(MENU_NAME, exists=True):
         pc.deleteUI(MENU_NAME)
-    menu = pc.menu(MENU_NAME, parent=gMainWindow, label=menu_title, to=True)
+    menu = pc.menu(MENU_NAME, parent=gMainWindow, label=MENU_TITLE, to=True)
 
     with open(OS_PATH.join(OS_PATH.dirname(__file__), 'command', 'menu.json'),
               'r') as file_:
@@ -127,6 +128,12 @@ def load_config(filename='loader.cfg'):
     except (configparser.NoOptionError, configparser.NoSectionError ):
         pass
 
+    global MENU_TITLE
+    try:
+        MENU_TITLE = config_parser.get('Menu', 'title')
+    except (configparser.NoOptionError, configparser.NoSectionError ):
+        pass
+
     global SITE_DIRS
     try:
         _site_dirs = config_parser.get('Paths', 'site_dirs')
@@ -145,6 +152,7 @@ def dump_config(filename='loader.cfg'):
     config_parser.set('Paths', 'SITE_DIRS', ';\n'.join(SITE_DIRS))
     config_parser.add_section('Menu')
     config_parser.set('Menu', 'name', MENU_NAME)
+    config_parser.set('Menu', 'title', MENU_TITLE)
 
     with open(filename, 'w+') as _file:
         config_parser.write(_file)
