@@ -3,20 +3,12 @@
 
 global proc string g_loader_load_mel_path() {
   string $result = `whatIs g_loader_load_mel_path`;
-
-  string $tokens[];
-  tokenize $result " " $tokens;
-
-  string $path = "";
-  int $x;
+  string $tokens[]; tokenize $result " " $tokens;
+  string $path = ""; int $x;
   for ($x=4; $x<size($tokens); $x++) {
     string $cur = $tokens[$x];
-    if ($cur == "//") {
-      break;
-    }
-    if ($path != "") {
-      $path += " ";
-    }
+    if ($cur == "//") break;
+    if ($path != "") $path += " ";
     $path += $cur;
   }
   return $path;
