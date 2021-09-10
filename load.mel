@@ -1,34 +1,35 @@
 //if (`getenv user` != "Administrator"){
 
 
-global proc gLoader_load_xyz() {}
+global proc string g_loader_load_mel_path() {
+  string $result = `whatIs g_loader_load_mel_path`;
 
-string $gLoader_load_xyz_result = `whatIs gLoader_load_xyz`;
-string $tokens[];
-tokenize $gLoader_load_xyz_result " " $tokens;
+  string $tokens[];
+  tokenize $result " " $tokens;
 
-string $path = "";
-int $x;
-for ($x=4; $x<size($tokens); $x++) {
-  string $cur = $tokens[$x];
-  if ($cur == "//") {
-    break;
+  string $path = "";
+  int $x;
+  for ($x=4; $x<size($tokens); $x++) {
+    string $cur = $tokens[$x];
+    if ($cur == "//") {
+      break;
+    }
+    if ($path != "") {
+      $path += " ";
+    }
+    $path += $cur;
   }
-  if ($path != "") {
-    $path += " ";
-  }
-  $path += $cur;
+  return $path;
 }
 
 
 // add the path to where the directory exists and accessible to clients
 // string $MENU = "r:/Pipe_Repo/Users/Hussain/utilities/loader";
-print $path;
 string $py_cmd = (
   "import pymel.core as pc"+
   "\nimport os.path as op"+
   "\nfrom site import addsitedir as asd"+
-  "\nasd(op.dirname(r'"+ $path + "'))"+
+  "\nasd(op.dirname(r'"+ g_loader_load_mel_path() + "'))"+
   "\nimport icemenu"
 );
 
