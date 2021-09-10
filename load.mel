@@ -3,9 +3,9 @@
 
 global proc gLoader_load_xyz() {}
 
-string $result = `whatIs gLoader_load_xyz`;
+string $gLoader_load_xyz_result = `whatIs gLoader_load_xyz`;
 string $tokens[];
-tokenize $result " " $tokens;
+tokenize $gLoader_load_xyz_result " " $tokens;
 
 string $path = "";
 int $x;
