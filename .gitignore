@@ -36,3 +36,6 @@ nosetests.xml
 
 #org-mode files
 *.org
+
+# config file for this app
+loader.cfg
