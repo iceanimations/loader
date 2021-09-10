@@ -1,6 +1,4 @@
-//if (`getenv user` != "Administrator"){
-
-
+// procedure to find out path of the current mel file
 global proc string g_loader_load_mel_path() {
   string $result = `whatIs g_loader_load_mel_path`;
   string $tokens[]; tokenize $result " " $tokens;
@@ -16,7 +14,6 @@ global proc string g_loader_load_mel_path() {
 
 
 // add the path to where the directory exists and accessible to clients
-// string $MENU = "r:/Pipe_Repo/Users/Hussain/utilities/loader";
 string $py_cmd = (
   "import pymel.core as pc"+
   "\nimport os.path as op"+
@@ -25,19 +22,4 @@ string $py_cmd = (
   "\nimport icemenu"
 );
 
-print $py_cmd;
 python($py_cmd);
-
-//}
-
-//global proc string fromNativePath ( string $strFile )
-//{
-	//if( `about -nt` )
-	//{
-        //string $buf[];
-        //string $newStr = encodeString($strFile);
-        //tokenize($newStr, "\\", $buf);
-        //$strFile = stringArrayToString($buf, "/");
-    //}
-	//return $strFile;
-//}
